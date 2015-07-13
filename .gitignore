@@ -6,13 +6,13 @@
 # RStudio files
 .Rproj.user/
 .RData
-.Rproj
+*.Rproj
 # produced vignettes
 vignettes/*.html
 vignettes/*.pdf
 .Rproj.user
 # downloaded data
-.zip
+*.zip
 # generatet datasets
-.txt
+*.txt
 UCI HAR Dataset
