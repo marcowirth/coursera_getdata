@@ -79,16 +79,19 @@ data.names <- gsub("^f", "Frequency", data.names)
 data.names <- gsub("tBody", "TimeBody", data.names)
 data.names <- gsub("-mean\\(\\)", "Mean", data.names, ignore.case = TRUE)
 data.names <- gsub("-std\\(\\)", "STD", data.names, ignore.case = TRUE)
-data.names <- gsub("-freq()", "Frequency", data.names, ignore.case = TRUE)
+data.names <- gsub("-freq\\(\\)", "Frequency", data.names, ignore.case = TRUE)
+data.names <- gsub("-meanFreq\\(\\)", "MeanFrequency", data.names)
 data.names <- gsub("angle", "Angle", data.names)
 data.names <- gsub("gravity", "Gravity", data.names)
 setnames(data, data.names)
+# setnames(data, tolower(data.names)) # lower case naming is illegible in this situation
 
 # 5) create a second, independent tidy data set with the average of each variable for each activity and each subject --------
 ## grouping of data by subject and activity and perform the computation of the mean values
 data.tidy <- data[, lapply(.SD, mean), by = list(Subject, Activity)]
 ##order data for nicer reading
 data.tidy <- data.tidy[order(Subject, Activity)]
+names(data.tidy)
 
 ## write the tidy data set with the specified options
 write.table(data.tidy, file = "subject_activity_means.txt", row.names=FALSE)
