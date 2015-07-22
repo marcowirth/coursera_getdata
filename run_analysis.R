@@ -91,7 +91,6 @@ setnames(data, data.names)
 data.tidy <- data[, lapply(.SD, mean), by = list(Subject, Activity)]
 ##order data for nicer reading
 data.tidy <- data.tidy[order(Subject, Activity)]
-names(data.tidy)
 
 ## write the tidy data set with the specified options
 write.table(data.tidy, file = "subject_activity_means.txt", row.names=FALSE)
